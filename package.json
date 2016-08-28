@@ -1,0 +1,23 @@
+{
+  "name": "ihs_server",
+  "version": "0.0.1",
+  "description": "server for ihs app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dump": "pg_dump -d ihs_development --schema-only -O -f schema.sql",
+    "migrate": "./node_modules/db-migrate/bin/db-migrate up"
+  },
+  "author": "rurabe",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.3",
+    "body-parser": "^1.15.2",
+    "db-migrate": "^0.10.0-beta.15",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "lodash": "^4.15.0",
+    "pg": "^6.1.0",
+    "squel": "^5.4.2"
+  }
+}

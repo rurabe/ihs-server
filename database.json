@@ -1,0 +1,8 @@
+{
+  "development": {
+    "driver": "pg",
+    "user": "ihs",
+    "host": "localhost",
+    "database": "ihs_development"
+  }
+}
