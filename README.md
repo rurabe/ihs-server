@@ -72,6 +72,7 @@ responds with GeoJSON FeatureCollection that includes the newly created report.
 ### get /reports
 accepts following params:
 
-- from (iso timestamp,utc): filters list to return only reports created after this date and time
+- from:timestamp,utc 
+  - filters list to return only reports created after this date and time
 
 responds with GeoJSON FeatureCollection of every matching report ordered by created_at descending.
