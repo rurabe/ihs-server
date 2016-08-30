@@ -5,7 +5,6 @@ const GeoJsonHelpers = require('../helpers/geo_json_helpers');
 
 const _handle = function(res){
   return function(reports){
-    console.log(reports)
     res.json(GeoJsonHelpers.encode(reports));
   };
 };
@@ -21,7 +20,7 @@ const ReportsController = {
     Report.create(req.body).then(_handle(res)).catch(_errors(res));
   },
   index: function(req,res){
-    Report.fetch().then(_handle(res)).catch(_errors(res));
+    Report.fetch(req.query).then(_handle(res)).catch(_errors(res));
   },
 };
 

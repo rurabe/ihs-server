@@ -1,5 +1,5 @@
 # ihs-server
-server for ihs reports app
+server for ihs reports app for #hacc hawaii annual code challenge homeless initiative project.
 
 ## get started
 ### install dependencies
@@ -39,7 +39,7 @@ accepts json in the body constructed as:
 - latitude:decimal
 - photo:text (url to photo)
 - description: text
-- name: text,
+- name: text
 - phone: text
 
 no need to send timestamps, they will be applied automatically on the server.
@@ -70,6 +70,8 @@ responds with GeoJSON FeatureCollection that includes the newly created report.
 ```
 
 ### get /reports
-accepts nothing at the moment
+accepts following params:
 
-responds with GeoJSON FeatureCollection of every report in the reports table ordered by created_at descending.
+- from (iso timestamp,utc): filters list to return only reports created after this date and time
+
+responds with GeoJSON FeatureCollection of every matching report ordered by created_at descending.
