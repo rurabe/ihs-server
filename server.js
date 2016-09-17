@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 
 const Routes = require('./src/routes');
 
-app.set('port', (process.env.PORT || 6000));
+app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 
 Routes.init(app);

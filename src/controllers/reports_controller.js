@@ -11,17 +11,18 @@ const _handle = function(res){
 
 const _errors = function(res){
   return function(e){
+    console.log("error",e)
     res.status(500).json(JSON.stringify(e));
   };
 };
 
 const ReportsController = {
   create: function(req,res){
-    console.log("Reports#create")
+    console.log("Reports#create",req.body)
     Report.create(req.body).then(_handle(res)).catch(_errors(res));
   },
   index: function(req,res){
-    console.log("Reports#index")
+    console.log("Reports#index",req.query)
     Report.fetch(req.query).then(_handle(res)).catch(_errors(res));
   },
 };
