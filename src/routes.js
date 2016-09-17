@@ -7,6 +7,8 @@ const Routes = {
     // reports
     app.post('/reports',ReportsController.create);
     app.get('/reports',ReportsController.index);
+
+    app.get('/test',(req,res) => { res.json({test: 'ok'}) })
   }
 };
 
