@@ -1,0 +1,30 @@
+/* line 1, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+html, body, #main, #app {
+  height: 100%; }
+
+/* line 4, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+body {
+  margin: 0px; }
+
+/* line 7, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#app {
+  position: relative; }
+
+/* line 10, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#map {
+  position: absolute;
+  height: 100%;
+  width: 100%; }
+
+/* line 15, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.leaflet-container {
+  height: 100%;
+  width: 100%; }
+
+/* line 19, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#feed {
+  width: 20%;
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  background-color: rgba(180, 180, 180, 0.5); }

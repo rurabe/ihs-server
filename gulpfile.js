@@ -9,6 +9,8 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var uglifycss = require('gulp-uglifycss');
 var uglify = require('gulp-uglify');
+var replace = require('gulp-replace-task');
+var fs = require('fs');
 
 var bfy = function(entry){
   var customOpts = {
@@ -20,12 +22,25 @@ var bfy = function(entry){
   return browserify(opts).transform('babelify', {presets: ['es2015', 'react']})
 }
 
+var envs = {
+  patterns: [{
+    json: fs.readFileSync('./.env','utf-8').split("\n").reduce(function(o,v){
+      var split = v.split('=');
+      o[split[0]] = split[1];
+      return o;
+    },{}),
+  }],
+};
+
+gutil.log(envs)
+
 
 var bundleify = function(bfy,entry){
   return bfy.bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source(`${entry}.js`))
     .pipe(buffer())
+    .pipe(replace(envs))
     .pipe(gulp.dest('./public'));
 }
 
@@ -44,7 +59,7 @@ gulp.task('css',function(){
 });
 
 gulp.task('watch',function(){
-  ['app','orders'].map(e => {
+  ['app'].map(e => {
     var w = watchify(bfy(e))
 
     w.on('update', function(){  bundleify(w,e); });

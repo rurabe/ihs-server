@@ -8,12 +8,15 @@ const GeoJsonHelpers = {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [r.longitude,r.latitude],
+          coordinates: [r.latitude,r.longitude],
         },
         properties: _.omit(r,['longitude','latitude'])
       }
     });
     return { type: 'FeatureCollection', features: features };
+  },
+  keyFeatures: function(geojson){
+    return _.keyBy(geojson.features,f => f.properties.id )
   }
 };
 
