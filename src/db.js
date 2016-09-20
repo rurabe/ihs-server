@@ -19,4 +19,10 @@ const DB = {
   },
 };
 
+DB.query("select 1;").then(() => {
+  console.log("Database connected");
+}).catch(e => {
+  console.log("Database failed to connect",e)
+})
+
 module.exports = DB;

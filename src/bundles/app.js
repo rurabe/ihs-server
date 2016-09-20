@@ -1,0 +1,12 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+const App = React.createClass({
+  render: function(){
+    return <h1>foo</h1>;
+  }
+});
+
+document.addEventListener("DOMContentLoaded", event => {
+  ReactDOM.render(<App/>,document.getElementById('main'));
+});
