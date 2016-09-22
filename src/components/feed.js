@@ -10,12 +10,12 @@ const Feed = React.createClass({
       .groupBy(r => {
         return getDateKey(new Date(r.getIn(['properties','created_at'])));
       })
-      .toIndexedSeq()
       .sortBy((group, k) => k)
       .reverse()
       .map((group, k) => {
         return <FeedGroup reportGroup={group} key={k}/>
       })
+      .toIndexedSeq();
 
     return (
       <div id="feed">
