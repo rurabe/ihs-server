@@ -1,19 +1,28 @@
 'use strict';
 const React = require('react');
 const { connect } = require('react-redux');
-const FeedItem = require('./feed_item')
+const { getDateKey } = require('../helpers/date_time_helpers');
+const FeedGroup = require('./feed_group')
 
 const Feed = React.createClass({
   render: function(){
-    const feedItems = this.props.reports.toIndexedSeq().sortBy(r => r.getIn(['properties','created_at'])).reverse().map(r => {
-      return <FeedItem report={r} key={r.getIn(['properties','id'])}/>;
-    });
+    const feedGroups = this.props.reports
+      .groupBy(r => {
+        return getDateKey(new Date(r.getIn(['properties','created_at'])));
+      })
+      .toIndexedSeq()
+      .sortBy((group, k) => k)
+      .reverse()
+      .map((group, k) => {
+        return <FeedGroup reportGroup={group} key={k}/>
+      })
 
     return (
       <div id="feed">
-        <ul>
-          {feedItems}
-        </ul>
+        <nav>
+          <a id="logout" href="#">Logout</a>
+        </nav>
+        {feedGroups}
       </div>
     )
   }
@@ -21,7 +30,7 @@ const Feed = React.createClass({
 
 const mapStateToProps = function(state){
   return {
-    reports: state.reports,
+    reports: state.reports
   }
 }
 
