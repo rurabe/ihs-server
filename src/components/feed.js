@@ -22,7 +22,9 @@ const Feed = React.createClass({
         <nav>
           <a id="logout" href="#">Logout</a>
         </nav>
-        {feedGroups}
+        <div id="feed-group-container">
+          {feedGroups}
+        </div>
       </div>
     )
   }
