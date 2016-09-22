@@ -1,24 +1,79 @@
+html
+  box-sizing: borer-box
+
+*, *:before, *:after
+  box-sizing: inherit
+
 html,body,#main,#app
   height: 100%
 
 body
   margin: 0px
+  font: 14px sans-serif
+  color: #333
+  line-height: 1.5
+
+a
+  text-decoration: none
+  color: #333
 
 #app
-  position: relative
+  display: flex
 
 #map
-  position: absolute
+  flex: 1
   height: 100%
-  width: 100%
 
 .leaflet-container
   height: 100%
   width: 100%
 
 #feed
-  width: 20%
-  position: absolute
-  right: 0px
+  width: 300px
   height: 100%
-  background-color: rgba(180,180,180,0.5)
+  background-color: white
+  overflow-y: auto
+
+nav
+  margin-bottom: 1em
+  padding: 10px 20px
+  background: mediumseagreen
+  text-align: right
+
+#logout
+  color: white
+
+#logout:active
+  color: grey
+
+#feed > ul
+  margin: 0
+  padding: 20px
+  list-style-type: none
+
+.feed-item
+  white-space: nowrap
+  overflow: hidden
+
+.feed-item:not(:first-child)
+  margin-top: 0.5em
+
+.feed-item > time
+  display: inline-block
+  width: 5em
+  text-align: right
+
+.feed-item > small
+  margin-left: 15px
+  color: grey
+
+.report-popup dt
+  font-size: 0.8em
+  color: grey
+
+.report-popup dd
+  margin: 0
+
+.phone
+  float: right
+

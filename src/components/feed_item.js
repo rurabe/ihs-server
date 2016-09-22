@@ -1,18 +1,19 @@
 'use strict';
 const React = require('react');
+const { formatTime } = require('../helpers/date_time_helpers');
 
 const FeedItem = React.createClass({
   render: function(){
-
-    const formattedTime = new Date(this.props.report.getIn(['properties','created_at'])).toLocaleString();
+    const createdAt = this.props.report.getIn(['properties','created_at']);
+    const formattedTime = formatTime(new Date(createdAt))
+    const submittedBy = this.props.report.getIn(['properties','name']);
 
     return (
       <li className="feed-item">
-        {formattedTime} - {this.props.report.getIn(['properties','description'])}
+        <time>{formattedTime}</time><small>by</small> {submittedBy}
       </li>
     )
   }
 });
-
 
 module.exports = FeedItem;
