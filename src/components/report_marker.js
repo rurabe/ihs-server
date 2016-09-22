@@ -20,13 +20,15 @@ const ReportMarker = React.createClass({
     const formattedTime = formatTime(dateTime);
     const name = this.props.report.getIn(['properties','name']) || 'Anonymous';
     const formattedPhone = formatPhone(this.props.report.getIn(['properties','phone']));
+    const photoURL = this.props.report.getIn(['properties','photo'])
+      || '/assets/images/portrait.png';
 
     return (
       <Marker position={position}>
         <Popup>
           <div className="report-popup">
             <h3>{formattedDate}, {formattedTime}</h3>
-            <img src={this.props.report.getIn(['properties','photo'])} width={300}/>
+            <img src={photoURL} width={300}/>
             <p>{this.props.report.getIn(['properties','description'])}</p>
             <dl>
               <dt>Requested By</dt>
