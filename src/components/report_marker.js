@@ -1,5 +1,8 @@
 'use strict';
 const React = require('react');
+const { connect } = require('react-redux');
+const { saveRef } = require('../actions/markers_actions');
+const { selectId } = require('../actions/active_id_actions');
 const { Marker,Popup } = require('react-leaflet');
 const { formatDate,formatTime } = require('../helpers/date_time_helpers');
 
@@ -11,7 +14,19 @@ function formatPhone(phone) {
 }
 
 const ReportMarker = React.createClass({
+  onPopupClose: function() {
+    this.props.dispatch(selectId(null));
+  },
+  onClick: function(id) {
+    this.props.dispatch(selectId(id));
+  },
+  ref: function(marker) {
+    const id = this.props.report.getIn(['properties','id']);
+    marker.leafletElement.on('popupclose',this.onPopupClose);
+    this.props.dispatch(saveRef(id,marker.leafletElement));
+  },
   render: function(){
+    const id = this.props.report.getIn(['properties','id']);
     const position = this.props.report.getIn(['geometry','coordinates'])
       .toJSON()
       .map(parseFloat);
@@ -24,7 +39,7 @@ const ReportMarker = React.createClass({
       || '/assets/images/portrait.png';
 
     return (
-      <Marker position={position}>
+      <Marker position={position} onClick={this.onClick.bind(this,id)} ref={this.ref}>
         <Popup>
           <div className="report-popup">
             <h3>{formattedDate}, {formattedTime}</h3>
@@ -41,4 +56,4 @@ const ReportMarker = React.createClass({
   }
 });
 
-module.exports = ReportMarker;
+module.exports = connect()(ReportMarker);
