@@ -13,7 +13,7 @@ class Report {
   static fetch(criteria){
     criteria = criteria || {};
     let q = Squel.select().from('reports').order('created_at',false); // false makes it sort desc
-    if(criteria.from){ q = q.where('created_at > ?',criteria.from) }
+    if(criteria.from){ q = q.where('created_at > ?',new Date(criteria.from).toISOString()) }
     return DB.query(q.toParam());
   }
 };

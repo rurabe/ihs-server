@@ -1,30 +1,133 @@
 /* line 1, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+html {
+  box-sizing: borer-box; }
+
+/* line 4, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/* line 7, /Users/rurabe/dev/ihs_server/src/css/app.sass */
 html, body, #main, #app {
   height: 100%; }
 
-/* line 4, /Users/rurabe/dev/ihs_server/src/css/app.sass */
-body {
-  margin: 0px; }
-
-/* line 7, /Users/rurabe/dev/ihs_server/src/css/app.sass */
-#app {
-  position: relative; }
-
 /* line 10, /Users/rurabe/dev/ihs_server/src/css/app.sass */
-#map {
-  position: absolute;
-  height: 100%;
-  width: 100%; }
+body {
+  margin: 0px;
+  font: 14px sans-serif;
+  color: #333;
+  line-height: 1.5; }
 
-/* line 15, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+/* line 16, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+a {
+  text-decoration: none;
+  color: #333; }
+
+/* line 20, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+/* line 25, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#app {
+  display: flex; }
+
+/* line 28, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#map {
+  flex: 1;
+  height: 100%; }
+
+/* line 32, /Users/rurabe/dev/ihs_server/src/css/app.sass */
 .leaflet-container {
   height: 100%;
   width: 100%; }
 
-/* line 19, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+/* line 36, /Users/rurabe/dev/ihs_server/src/css/app.sass */
 #feed {
-  width: 20%;
-  position: absolute;
-  right: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
   height: 100%;
-  background-color: rgba(180, 180, 180, 0.5); }
+  background-color: white;
+  overflow-y: auto; }
+
+/* line 44, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+nav {
+  padding: 10px 20px;
+  background: mediumseagreen;
+  text-align: right; }
+
+/* line 49, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#logout {
+  color: white; }
+
+/* line 52, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#logout:active {
+  color: grey;
+  display: flex;
+  flex-direction: column; }
+
+/* line 58, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+#feed-group-container {
+  flex: 1;
+  padding: 1em 0;
+  overflow-y: auto; }
+
+/* line 63, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-group {
+  padding: 0 20px; }
+
+/* line 66, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-group:not(:first-child) {
+  margin-top: 1em; }
+
+/* line 69, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-group .date {
+  margin: 0;
+  font-size: 15px; }
+
+/* line 73, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-group .weekday {
+  margin-left: 0.5em;
+  color: #999; }
+
+/* line 77, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-item {
+  white-space: nowrap;
+  overflow: hidden; }
+
+/* line 81, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-item:hover {
+  cursor: pointer; }
+
+/* line 84, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-item.selected {
+  background: #DDD; }
+
+/* line 87, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-item:not(:first-child) {
+  margin-top: 0.5em; }
+
+/* line 90, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-item > time {
+  display: inline-block;
+  width: 6em;
+  text-align: right; }
+
+/* line 95, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.feed-item > small {
+  margin-left: 15px;
+  color: grey; }
+
+/* line 99, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.report-popup dt {
+  font-size: 0.8em;
+  color: grey; }
+
+/* line 103, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.report-popup dd {
+  margin: 0; }
+
+/* line 106, /Users/rurabe/dev/ihs_server/src/css/app.sass */
+.phone {
+  float: right; }
