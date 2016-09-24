@@ -17,12 +17,15 @@ const App = React.createClass({
   }
 });
 
-
 const reportsReducer = require('../reducers/reports_reducer');
+const markersReducer = require('../reducers/markers_reducer');
+const activeIdReducer = require('../reducers/active_id_reducer');
 
 const store = createStore(combineReducers({
   reports: reportsReducer,
-}));  
+  markers: markersReducer,
+  activeId: activeIdReducer
+}));
 
 const ReportsActions = require('../actions/reports_actions');
 
@@ -32,8 +35,8 @@ const pollReports = function(){
 
 document.addEventListener("DOMContentLoaded", event => {
   ReactDOM.render(
-    <Provider store={store}> 
-      <App/> 
+    <Provider store={store}>
+      <App/>
     </Provider>,
   document.getElementById('main'));
 });

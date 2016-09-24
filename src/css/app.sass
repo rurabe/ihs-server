@@ -34,13 +34,14 @@ ul
   width: 100%
 
 #feed
+  display: flex
+  flex-direction: column
   width: 300px
   height: 100%
   background-color: white
   overflow-y: auto
 
 nav
-  margin-bottom: 1em
   padding: 10px 20px
   background: mediumseagreen
   text-align: right
@@ -51,8 +52,13 @@ nav
 #logout:active
   color: grey
 
-#feed > ul
-  padding: 20px
+  display: flex
+  flex-direction: column
+
+#feed-group-container
+  flex: 1
+  padding: 1em 0
+  overflow-y: auto
 
 .feed-group
   padding: 0 20px
@@ -71,6 +77,9 @@ nav
 .feed-item
   white-space: nowrap
   overflow: hidden
+
+.feed-item:hover
+  cursor: pointer
 
 .feed-item.selected
   background: #DDD
